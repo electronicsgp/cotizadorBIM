@@ -160,6 +160,7 @@
                                               <span>Instalación eléctrica</span>
                                             </label>
                                         <br>
+                                        <!-- USO PENDIENTE
                                         <label>
                                               <input type="checkbox" name="acheckbox[]" value="mecanica" data-validetta="minChecked[1]"/>
                                               <span> Mecánica de suelos</span>
@@ -168,8 +169,8 @@
                                         <label>
                                               <input type="checkbox" name="acheckbox[]" value="cambioSuelo" data-validetta="minChecked[1]"/>
                                               <span> Cambio de uso de suelo</span>
-                                            </label>
-                                        </p>
+                                            </label>-->
+                                        
                                     </div>
                                 </div>
                             </div>
