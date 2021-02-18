@@ -347,7 +347,7 @@
 
             </div>
             <div id="Exis" class="col s12">
-                <div class = "col s12 center-align">
+                <div class = "card-panel center-align">
                 <i class="fas fa-cog fa-spin fa-10x"></i>
                 <h4 class="truncate">This is an extremely long title that will be truncated</h4>
                 </div>
