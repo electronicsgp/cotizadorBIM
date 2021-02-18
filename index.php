@@ -347,8 +347,10 @@
 
             </div>
             <div id="Exis" class="col s12">
-
-            <i class="fas fa-exclamation-triangle fa-10x" ></i>En contrucion
+                <div class = "col s12">
+                <i class="fas fa-cog fa-spin fa-10x"></i>En contrucion
+                </div>
+            
                 <!-- formulario Exitente
                 <form action="" id="exisE">
                     <ul class="collapsible">
