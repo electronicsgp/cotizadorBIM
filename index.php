@@ -347,7 +347,7 @@
 
             </div>
             <div id="Exis" class="col s12">
-                <div class = "col s12">
+                <div class = "col s12 center-align">
                 <i class="fas fa-cog fa-spin fa-10x"></i>En contrucion
                 </div>
             
