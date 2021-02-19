@@ -589,8 +589,7 @@
     </main>
     <footer class="page-footer">
 
-        <div class="footer-copyright">
-            <div class="container center-align">
+    <div class="container center-align">
             Copyright © PGP Developer 2021 
             </div>
         </div>
