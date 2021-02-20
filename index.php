@@ -51,7 +51,7 @@
             <div class="row">
                 <div class="col s12 m12 l12">
                     <ul class="tabs">
-                        <li class="tab col s6 m6 l6 "><a class="active " href="#New" c>EDIFasdadssaICACION NUEVA</a></li>
+                        <li class="tab col s6 m6 l6 "><a class="active " href="#New" c>EDIFICACION NUEVA</a></li>
                         <li class="tab col s6 m6 l6"><a href="#Exis">EDIFICACION EXISTENTE</a></li>
 
                     </ul>
@@ -346,7 +346,7 @@
                     </ul>
                 </form>
                 <div class="row">
-                    <div class="col s12 m5">
+                    <div class="col s12">
                         <div class="card-panel teal">
                             <span class="white-text">I am a very simple card. I am good at containing small bits of information.
                         I am convenient because I require little markup to use effectively. I am similar to what is called a panel in other frameworks.
