@@ -72,7 +72,7 @@
                                         <h6><i class="fas fa-hard-hat"></i> Edificación #</h6>
                                         <div class="divider col s12"></div><br>
                                         <label>
-                                        <input value="viviendaFa" name="edificacion" type="radio"/>
+                                        <input value="Vivienda Familiar" name="edificacion" type="radio"/>
                                         <span>Vivienda Familiar</span>
                                     </label>
                                         <br>
@@ -82,23 +82,23 @@
                                     </label>
                                         <br>
                                         <label>
-                                        <input value="viviendaFam" name="edificacion" type="radio"/>
+                                        <input value="Vivienda Multifamiliar" name="edificacion" type="radio"/>
                                         <span>Vivienda Multifamiliar</span>
                                     </label>
                                         <br>
                                         <label>
-                                        <input value="viviendaRes" name="edificacion" type="radio"/>
+                                        <input value="Vivienda Residencial" name="edificacion" type="radio"/>
                                         <span>Vivienda Residencial</span>
                                     </label>
                                         <br>
                                         <label>
-                                        <input value="OfyLocales" name="edificacion" type="radio"/>
+                                        <input value="Oficinas y Locales" name="edificacion" type="radio"/>
                                         <span>Oficinas y Locales</span>
                                     </label>
 
                                         <br>
                                         <label>
-                                    <input value="comercial" name="edificacion" type="radio"/>
+                                    <input value="Comercial" name="edificacion" type="radio"/>
                                     <span>Comercial</span>
                                     </label>
                                         <br>
@@ -108,27 +108,27 @@
                                     </label>
                                         <br>
                                         <label>
-                                        <input value="estacionamientos" name="edificacion" type="radio"/>
+                                        <input value="Estacionamientos" name="edificacion" type="radio"/>
                                         <span>Estacionamientos</span>
                                     </label>
                                         <br>
                                         <label>
-                                        <input value="publicaCon" name="edificacion" type="radio"/>
+                                        <input value="Pública concurrencia" name="edificacion" type="radio"/>
                                         <span>Pública concurrencia</span>
                                     </label>
                                         <br>
                                         <label>
-                                        <input value="docencia" name="edificacion" type="radio"/>
+                                        <input value="Docencia" name="edificacion" type="radio"/>
                                         <span>Docencia</span>
                                     </label>
                                         <br>
                                         <label>
-                                        <input value="salud" name="edificacion" type="radio"/>
+                                        <input value="Salud" name="edificacion" type="radio"/>
                                         <span>Salud</span>
                                     </label>
                                         <br>
                                         <label>
-                                        <input value="industrial" name="edificacion" type="radio" data-validetta="required"/>
+                                        <input value="Industrial" name="edificacion" type="radio" data-validetta="required"/>
                                         <span>Industrial</span>
                                     </label>
 

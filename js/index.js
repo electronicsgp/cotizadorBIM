@@ -153,7 +153,7 @@ $(document).ready(function() {
             }
 
             textoAlert = "<h4>HORIZONTE BIM</h4>" + "<p>Hola " + Nombre + " se envira un EMAIL a " + Correo + " en formato PDF con la cotizacion de manera desglosada</p>";
-            textoAlert1 = "<p>Si el correo electronico es coreecto presione enviar, de lo contrario presione cancelar y proporcione el correo electronio correcto</p>"
+            textoAlert1 = "<p>Si el correo electronico es correcto presione enviar, de lo contrario presione cancelar y proporcione el correo electronio correcto</p>"
             contentAl.innerHTML += textoAlert + textoAlert1;
             document.getElementById("testnose").onclick = function() { myFunction(botonM) };
             document.getElementById("testpdf").onclick = function() { testsub() };
