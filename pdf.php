@@ -104,7 +104,7 @@ $pdf->Cell(27, 8, utf8_decode('Atentamente'), 0, 'C');
 $pdf->SetXY(80, 215);
 $pdf->Cell(27, 8, utf8_decode('Ing. Moisés Barrientos Lozano.'), 0, 'C');
 
-$pdf->Output(); //Salida al navegador
+$pdf->Output('D'); //Salida al navegador
  
     
 
