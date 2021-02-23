@@ -18,14 +18,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
 
     <link href="./css/general.css" rel="stylesheet">
-    <script src="./plugins//jquery-3.4.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- <script src="./plugins//jquery-3.4.1.min.js"></script> -->
     <script src="./plugins/materialize/js/materialize.min.js"></script>
     <script src="./plugins/validetta/validetta.js"></script>
     <script src="./plugins/validetta/validetta.min.js"></script>
     <script src="./plugins/validetta/validettaLang-es-ES.js"></script>
     <script src="./plugins/confirm/jquery-confirm.min.js"></script>
     <script src="./js/index.js"></script>
-
+    <script src="./js/pdf.js"></script>
 
 </head>
 
@@ -61,7 +62,7 @@
 
             </div>
             <div id="New" class="col s12">
-                <form action="" id="nuevaE">
+                <form action="./pdf.php" id="nuevaE" method='post'>
                     <ul class="collapsible">
                         <li>
                             <div class="collapsible-header"><i class="fas fa-building "></i>Tipo de Edificacion</div>
@@ -81,53 +82,53 @@
                                     </label>
                                         <br>
                                         <label>
-                                        <input name="edificacion" type="radio"/>
+                                        <input value="viviendaFam" name="edificacion" type="radio"/>
                                         <span>Vivienda Multifamiliar</span>
                                     </label>
                                         <br>
                                         <label>
-                                        <input name="edificacion" type="radio"/>
+                                        <input value="viviendaRes" name="edificacion" type="radio"/>
                                         <span>Vivienda Residencial</span>
                                     </label>
                                         <br>
                                         <label>
-                                        <input name="edificacion" type="radio"/>
+                                        <input value="OfyLocales" name="edificacion" type="radio"/>
                                         <span>Oficinas y Locales</span>
                                     </label>
 
                                         <br>
                                         <label>
-                                    <input name="edificacion" type="radio"/>
+                                    <input value="comercial" name="edificacion" type="radio"/>
                                     <span>Comercial</span>
                                     </label>
                                         <br>
                                         <label>
-                                        <input name="edificacion" type="radio"/>
+                                        <input value="administrativo" name="edificacion" type="radio"/>
                                         <span>Administrativo</span>
                                     </label>
                                         <br>
                                         <label>
-                                        <input name="edificacion" type="radio"/>
+                                        <input value="estacionamientos" name="edificacion" type="radio"/>
                                         <span>Estacionamientos</span>
                                     </label>
                                         <br>
                                         <label>
-                                        <input name="edificacion" type="radio"/>
+                                        <input value="publicaCon" name="edificacion" type="radio"/>
                                         <span>Pública concurrencia</span>
                                     </label>
                                         <br>
                                         <label>
-                                        <input name="edificacion" type="radio"/>
+                                        <input value="docencia" name="edificacion" type="radio"/>
                                         <span>Docencia</span>
                                     </label>
                                         <br>
                                         <label>
-                                        <input name="edificacion" type="radio"/>
+                                        <input value="salud" name="edificacion" type="radio"/>
                                         <span>Salud</span>
                                     </label>
                                         <br>
                                         <label>
-                                        <input  name="edificacion" type="radio" data-validetta="required"/>
+                                        <input value="industrial" name="edificacion" type="radio" data-validetta="required"/>
                                         <span>Industrial</span>
                                     </label>
 
@@ -136,27 +137,27 @@
                                         <h6><i class="fas fa-tasks"></i> Proyectos y/o Estudios:</h6>
                                         <div class="divider col s12"></div><br>
                                         <label>
-                                              <input type="checkbox" name="acheckbox[]" value="arqui" data-validetta="minChecked[1]"/>
+                                              <input type="checkbox" name="acheckbox[]" value="Arquitectura" data-validetta="minChecked[1]"/>
                                               <span>Arquitectura</span>
                                             </label>
                                         <br>
                                         <label>
-                                              <input type="checkbox" name="acheckbox[]" value="estructura" data-validetta="minChecked[1]"/>
+                                              <input type="checkbox" name="acheckbox[]" value="Estructura" data-validetta="minChecked[1]"/>
                                               <span>Estructura</span>
                                             </label>
                                         <br>
                                         <label>
-                                              <input type="checkbox" name="acheckbox[]" value="insHidra" data-validetta="minChecked[1]"/>
+                                              <input type="checkbox" name="acheckbox[]" value="Instalalación hidráulica" data-validetta="minChecked[1]"/>
                                               <span>Instalalación hidráulica</span>
                                             </label>
                                         <br>
                                         <label>
-                                              <input type="checkbox" name="acheckbox[]" value="insSani" data-validetta="minChecked[1]"/>
+                                              <input type="checkbox" name="acheckbox[]" value="Instalación sanitaria" data-validetta="minChecked[1]"/>
                                               <span> Instalación sanitaria </span>
                                             </label>
                                         <br>
                                         <label>
-                                              <input type="checkbox" name="acheckbox[]" value="insElec" data-validetta="minChecked[1]"/>
+                                              <input type="checkbox" name="acheckbox[]" value="Instalación eléctrica" data-validetta="minChecked[1]"/>
                                               <span>Instalación eléctrica</span>
                                             </label>
                                         <br>
@@ -181,7 +182,7 @@
                                 <div class="row">
                                     <div class="input-field col s12 m6 l6">
 
-                                        <input placeholder="Calle 6 No. 517, Col." id="dirCa" type="text" data-validetta="required">
+                                        <input placeholder="Calle 6 No. 517, Col." id="dirUb" type="text" data-validetta="required">
                                         <label for="dirCa"><i class="fas fa-map-marker-alt"></i> Ubicación del proyecto</label>
                                     </div>
                                     <div class="col s12 m6 l6">
@@ -194,7 +195,7 @@
                                 <div class="row">
                                     <div class="col s12 m6 l6">
                                         <label><i class="fas fa-map-marker-alt"></i> Ciudad o Municipio</label>
-                                        <select id="jmr_contacto_municipio" class="browser-default" data-validetta="required">
+                                        <select id="jmr_contacto_municipio" class="browser-default" data-validetta="required" name='ciudad'>
                                           <option value="" >Selecciona una opci&oacute;n</option>
                                         </select>
                                     </div>
@@ -209,15 +210,15 @@
                                 <div class="row">
                                     <div class="input-field col s12 m4 l4">
                                         <input placeholder="Introduce el area en m2" id="areaPb" type="text" data-validetta="number,required">
-                                        <label for="first_name"><i class="fas fa-ruler-combined"></i> Área de planta baja (m2)</label>
+                                        <label ><i class="fas fa-ruler-combined"></i> Área de planta baja (m2)</label>
                                     </div>
                                     <div class="input-field col s12 m4 l4">
-                                        <input placeholder="2" id="first_name" id="numNiv" type="text" data-validetta="number,required">
-                                        <label for="first_name"><i class="fas fa-kaaba"></i> Número de niveles tipo</label>
+                                        <input placeholder="2" id="numNiv" type="text" data-validetta="number,required">
+                                        <label ><i class="fas fa-kaaba"></i> Número de niveles tipo</label>
                                     </div>
                                     <div class="input-field col s12 m4 l4">
-                                        <input placeholder="03400" id="first_name" id="areaNp" type="text" data-validetta="number,required">
-                                        <label for="100"><i class="fas fa-ruler-combined"></i> Área del nivel tipo (m2)</label>
+                                        <input placeholder="03400"  id="areaNp" type="text" data-validetta="number,required">
+                                        <label ><i class="fas fa-ruler-combined"></i> Área del nivel tipo (m2)</label>
                                     </div>
                                 </div>
                                 <h6 style="display: inline;"><i class="fas fa-ruler-combined"></i> Sotanos</h6>
@@ -244,27 +245,27 @@
                                         <div class="divider"></div>
                                         <br>
                                         <label>
-                                              <input name="accesibilidad" type="radio" value=""/>
+                                              <input name="accesibilidad" type="radio" value="Mbuena"/>
                                               <span>Muy Buena</span>
                                             </label>
                                         <br>
                                         <label>
-                                              <input name="accesibilidad" type="radio" value=""/>
+                                              <input name="accesibilidad" type="radio" value="buena"/>
                                               <span> Buena</span>
                                             </label>
                                         <br>
                                         <label>
-                                              <input name="accesibilidad" type="radio" value=""/>
+                                              <input name="accesibilidad" type="radio" value="normal"/>
                                               <span>Normal</span>
                                             </label>
                                         <br>
                                         <label>
-                                              <input name="accesibilidad" type="radio" value=""/>
+                                              <input name="accesibilidad" type="radio" value="dificil"/>
                                               <span>Dificil</span>
                                             </label>
                                         <br>
                                         <label>
-                                              <input name="accesibilidad" type="radio" value="" data-validetta="required"/>
+                                              <input name="accesibilidad" type="radio" value="Mdificil" data-validetta="required"/>
                                               <span>Muy dificil</span>
                                             </label>
 
@@ -274,27 +275,27 @@
                                         <div class="divider"></div>
                                         <br>
                                         <label>
-                                              <input name="topografia" type="radio" value=""/>
+                                              <input name="topografia" type="radio" value="plana"/>
                                               <span>Plana</span>
                                             </label>
                                         <br>
                                         <label>
-                                              <input name="topografia" type="radio" value=""/>
+                                              <input name="topografia" type="radio" value="desnivelMin"/>
                                               <span>Con desnivel minimo</span>
                                             </label>
                                         <br>
                                         <label>
-                                              <input name="topografia" type="radio" value=""/>
+                                              <input name="topografia" type="radio" value="desnivelPron"/>
                                               <span>Con desnivel pronunciado</span>
                                             </label>
                                         <br>
                                         <label>
-                                              <input name="topografia" type="radio" value=""/>
+                                              <input name="topografia" type="radio" value="accidentada"/>
                                               <span>Accidentada</span>
                                             </label>
                                         <br>
                                         <label>
-                                              <input name="topografia" type="radio" value="" data-validetta="required"/>
+                                              <input name="topografia" type="radio" value="Maccidentada" data-validetta="required"/>
                                               <span>Muy accidentada</span>
                                             </label>
                                     </div>
@@ -303,17 +304,17 @@
                                         <div class="divider"></div>
                                         <br>
                                         <label>
-                                              <input name="ubicacion" type="radio" value=""/>
+                                              <input name="ubicacion" type="radio" value="colindancias"/>
                                               <span>Entre colindacias</span>
                                             </label>
                                         <br>
                                         <label>
-                                              <input name="ubicacion" type="radio" value=""/>
+                                              <input name="ubicacion" type="radio" value="esquina"/>
                                               <span>En esquina</span>
                                             </label>
                                         <br>
                                         <label>
-                                              <input name="ubicacion" type="radio" value="" data-validetta="required"/>
+                                              <input name="ubicacion" type="radio" value="aislada" data-validetta="required"/>
                                               <span>Aislada</span>
                                             </label>
 
@@ -327,32 +328,41 @@
                             <div class="collapsible-body">
                                 <div class="row">
                                     <div class="input-field col s12 m4 l4">
-                                        <input placeholder="Francisco Martinez Del Campo" id="nombreCom" type="text" data-validetta="required">
-                                        <label for="first_name"><i class="fas fa-user"></i> Nombre Completo</label>
+                                        <input placeholder="Francisco Martinez Del Campo" id="nombreCom" name="nombreC" type="text" data-validetta="required">
+                                        <label ><i class="fas fa-user"></i> Nombre Completo</label>
                                     </div>
                                     <div class="input-field col s12 m4 l4">
-                                        <input placeholder="+1 3004005000" id="numTel" type="text" data-validetta="number,required">
-                                        <label for="first_name"><i class="fas fa-mobile"></i> Número de telefono</label>
+                                        <input placeholder="+1 3004005000" id="numTel" type="text" name="numT"data-validetta="number,required">
+                                        <label ><i class="fas fa-mobile"></i> Número de telefono</label>
                                     </div>
                                     <div class="input-field col s12 m4 l4">
-                                        <input placeholder="Evangeline@ray.com" id="email" type="text" data-validetta="required,email">
-                                        <label for="100"><i class="fas fa-at"></i> Correo Electrónico</label>
+                                        <input placeholder="Evangeline@ray.com" id="email" type="text" name="email" data-validetta="required,email">
+                                        <label ><i class="fas fa-at"></i> Correo Electrónico</label>
                                     </div>
                                 </div>
-                                <button class="btn waves-effect waves-light" type="submit" name="action">Enviar
+                                <button class="btn waves-effect waves-light" type="submit" name="action">Cotizar
                                 <i class="fas fa-check-double"></i></button>
                             </div>
                         </li>
                     </ul>
                 </form>
-                <div class="row">
-                    <div class="col s12">
-                        <div class="card-panel teal">
-                            <span class="white-text">I am a very simple card. I am good at containing small bits of information.
-                        I am convenient because I require little markup to use effectively. I am similar to what is called a panel in other frameworks.
-                        </span>
+                <div class="row" >
+                    <div class="col s12 content-result" id="boxresult">
+                        <div class="card-panel grey lighten-4 " id="contentbox">
                         </div>
                     </div>
+                           <div class="botonM center-align" id="contentB">
+                                <a id="enviaM" class="waves-effect waves-light btn modal-trigger"  href="#modal1">ENVIAR</a>
+                            </div>
+                            <!-- Modal Structure -->
+                            <div id="modal1" class="modal">
+                                <div class="modal-content" id="contentalert"> 
+                                </div>
+                                <div class="modal-footer">
+                                <a  id="testpdf" class="modal-close waves-effect waves-green btn-flat">Enviar</a>
+                                <a id="testnose" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
+                                </div>
+                            </div>
                 </div>
             </div>
             <div id="Exis" class="col s12">
