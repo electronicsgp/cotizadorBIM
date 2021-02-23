@@ -5,7 +5,7 @@ class PDF extends FPDF
     function Header()
     {
         //Imagen Encabezado
-        //$this->Image('encabezado.png', 15, 15, 180, 22, 'PNG');
+        $this->Image('./encabezado.PNG', 15, 15, 180, 22, 'PNG');
     }
 
     // Pie de página
