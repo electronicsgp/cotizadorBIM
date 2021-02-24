@@ -161,7 +161,7 @@ for ($i=1; $i <=$nump ; $i++) {
    $paux=$Aproyec[($i-1)];
    $pdf->SetXY(20, $posn);
 $pdf->MultiCell(170,5,utf8_decode("El importe del proyecto de $paux es de $ $aux , sin incluir el I. V. A."));//insertar los IMPORTES e IMPORTE TOTAL
-$posn= $posn+($i*10);
+$posn= $posn+10;
 }
 $pdf->SetXY(20, $posn); 
 $pdf->MultiCell(170,5,utf8_decode("El importe de la presente propuesta es de $ $ImporteT, sin incluir el I. V. A."));
