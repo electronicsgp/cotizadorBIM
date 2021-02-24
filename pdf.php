@@ -2,9 +2,6 @@
 
 include("./php/fpdf182/fpdf.php");
 include_once('CPDF.php');
-require "./PHPMailer-master/src/PHPMailer.php";
-require "./PHPMailer-master/src/SMTP.php";
-require "./PHPMailer-master/src/Exception.php";
 $aedif=array("Vivienda Familiar", "Vivienda Adosada", "Vivienda Multifamiliar", "Vivienda Residencial", "Oficinas y Locales", "Comercial", "administrativo", "Estacionamientos", "Pública concurrencia", "Docencia", "Salud", "Industrial");
 $nedif=array(5206.38, 12432.12, 11576.7, 20241.45, 16263.76, 14119.76, 22000, 6206.63, 13162.54, 6908.8, 25000, 5269.43);
 $nombre= $_POST["nombreC"]; 
@@ -174,13 +171,15 @@ $pdf->Cell(27, 8, utf8_decode('Atentamente'), 0, 'C');
 $pdf->SetXY(80, 215);
 $pdf->Cell(27, 8, utf8_decode('Ing. Moisés Barrientos Lozano.'), 0, 'C');
 
-$doc = $pdf->Output('','S') //Salida al navegador
+$doc = $pdf->Output('','S'); //Salida al navegador
  
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-
+require "PHPMailer-master/src/PHPMailer.php";
+require "PHPMailer-master/src/SMTP.php";
+require "PHPMailer-master/src/Exception.php";
 
 //Instantiation and passing `true` enables exceptions
 $mail = new PHPMailer(true);
