@@ -72,63 +72,63 @@
                                         <h6><i class="fas fa-hard-hat"></i> Edificación #</h6>
                                         <div class="divider col s12"></div><br>
                                         <label>
-                                        <input value="Vivienda Familiar" name="edificacion" type="radio"/>
+                                        <input value="1" name="edificacion" type="radio"/>
                                         <span>Vivienda Familiar</span>
                                     </label>
                                         <br>
                                         <label>
-                                        <input value="viviendaAd" name="edificacion" type="radio"/>
+                                        <input value="2" name="edificacion" type="radio"/>
                                         <span> Vivienda Adosada</span>
                                     </label>
                                         <br>
                                         <label>
-                                        <input value="Vivienda Multifamiliar" name="edificacion" type="radio"/>
+                                        <input value="3" name="edificacion" type="radio"/>
                                         <span>Vivienda Multifamiliar</span>
                                     </label>
                                         <br>
                                         <label>
-                                        <input value="Vivienda Residencial" name="edificacion" type="radio"/>
+                                        <input value="4" name="edificacion" type="radio"/>
                                         <span>Vivienda Residencial</span>
                                     </label>
                                         <br>
                                         <label>
-                                        <input value="Oficinas y Locales" name="edificacion" type="radio"/>
+                                        <input value="5" name="edificacion" type="radio"/>
                                         <span>Oficinas y Locales</span>
                                     </label>
 
                                         <br>
                                         <label>
-                                    <input value="Comercial" name="edificacion" type="radio"/>
+                                    <input value="6" name="edificacion" type="radio"/>
                                     <span>Comercial</span>
                                     </label>
                                         <br>
                                         <label>
-                                        <input value="administrativo" name="edificacion" type="radio"/>
+                                        <input value="7" name="edificacion" type="radio"/>
                                         <span>Administrativo</span>
                                     </label>
                                         <br>
                                         <label>
-                                        <input value="Estacionamientos" name="edificacion" type="radio"/>
+                                        <input value="8" name="edificacion" type="radio"/>
                                         <span>Estacionamientos</span>
                                     </label>
                                         <br>
                                         <label>
-                                        <input value="Pública concurrencia" name="edificacion" type="radio"/>
+                                        <input value="9" name="edificacion" type="radio"/>
                                         <span>Pública concurrencia</span>
                                     </label>
                                         <br>
                                         <label>
-                                        <input value="Docencia" name="edificacion" type="radio"/>
+                                        <input value="10" name="edificacion" type="radio"/>
                                         <span>Docencia</span>
                                     </label>
                                         <br>
                                         <label>
-                                        <input value="Salud" name="edificacion" type="radio"/>
+                                        <input value="11" name="edificacion" type="radio"/>
                                         <span>Salud</span>
                                     </label>
                                         <br>
                                         <label>
-                                        <input value="Industrial" name="edificacion" type="radio" data-validetta="required"/>
+                                        <input value="12" name="edificacion" type="radio" data-validetta="required"/>
                                         <span>Industrial</span>
                                     </label>
 
@@ -182,12 +182,12 @@
                                 <div class="row">
                                     <div class="input-field col s12 m6 l6">
 
-                                        <input placeholder="Calle 6 No. 517, Col." id="dirUb" type="text" data-validetta="required">
-                                        <label for="dirCa"><i class="fas fa-map-marker-alt"></i> Ubicación del proyecto</label>
+                                        <input placeholder="Calle 6 No. 517, Col." id="dirUb" type="text" name="calle" data-validetta="required">
+                                        <label ><i class="fas fa-map-marker-alt"></i> Ubicación del proyecto</label>
                                     </div>
                                     <div class="col s12 m6 l6">
                                         <label><i class="fas fa-map-marker-alt"></i> Estado</label>
-                                        <select id="jmr_contacto_estado" class="browser-default" data-validetta="required">
+                                        <select id="jmr_contacto_estado" name="estado" class="browser-default" data-validetta="required">
                                           <option value="" >Selecciona Estado</option>
                                         </select>
                                     </div>
@@ -195,29 +195,29 @@
                                 <div class="row">
                                     <div class="col s12 m6 l6">
                                         <label><i class="fas fa-map-marker-alt"></i> Ciudad o Municipio</label>
-                                        <select id="jmr_contacto_municipio" class="browser-default" data-validetta="required" name='ciudad'>
+                                        <select id="jmr_contacto_municipio" name="ciudad" class="browser-default" data-validetta="required" name='ciudad'>
                                           <option value="" >Selecciona una opci&oacute;n</option>
                                         </select>
                                     </div>
 
                                     <div class="input-field col s12 m6 l6">
-                                        <input placeholder="02501" id="dirCp" type="text" data-validetta="number,required">
-                                        <label for="first_name"><i class="fas fa-map-marker-alt"></i> C.P./Codigo Postal</label>
+                                        <input placeholder="02501" name="cp" id="dirCp" type="text" data-validetta="number,required">
+                                        <label ><i class="fas fa-map-marker-alt"></i> C.P./Codigo Postal</label>
                                     </div>
                                 </div>
                                 <h6><i class="fas fa-ruler-combined"></i> Areas del proyecto</h6>
                                 <div class="divider col s12"></div><br>
                                 <div class="row">
                                     <div class="input-field col s12 m4 l4">
-                                        <input placeholder="Introduce el area en m2" id="areaPb" type="text" data-validetta="number,required">
+                                        <input placeholder="Introduce el area en m2" name="areaPb" id="areaPb" type="text" data-validetta="number,required">
                                         <label ><i class="fas fa-ruler-combined"></i> Área de planta baja (m2)</label>
                                     </div>
                                     <div class="input-field col s12 m4 l4">
-                                        <input placeholder="2" id="numNiv" type="text" data-validetta="number,required">
+                                        <input placeholder="2" name="numNiv" id="numNiv" type="text" data-validetta="number,required">
                                         <label ><i class="fas fa-kaaba"></i> Número de niveles tipo</label>
                                     </div>
                                     <div class="input-field col s12 m4 l4">
-                                        <input placeholder="03400"  id="areaNp" type="text" data-validetta="number,required">
+                                        <input placeholder="03400" name="areaNp" id="areaNp" type="text" data-validetta="number,required">
                                         <label ><i class="fas fa-ruler-combined"></i> Área del nivel tipo (m2)</label>
                                     </div>
                                 </div>

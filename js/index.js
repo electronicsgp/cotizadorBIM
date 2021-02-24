@@ -13,7 +13,7 @@ $(document).ready(function() {
                 .append('');
             var meses = new Array("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");
             var diasSemana = new Array("Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado");
-
+            var Aedif = new Array("Vivienda Familiar", "Vivienda Adosada", "Vivienda Multifamiliar", "Vivienda Residencial", "Oficinas y Locales", "Comercial", "administrativo", "Estacionamientos", "Pública concurrencia", "Docencia", "Salud", "Industrial");
             var AreaPB, NumeroNiv, AreaNiv, NumSot, AreaSot, Edif1, Edif2, Edif3, Edif4, Edif5, Edif6, Edif7, Edif8, Edif9, Edif10, Edif11, Edif12;
             // var AreaTot, Factura1, Factor2, Factor3, Tab1, Tab2, Tab3, Tab4, Tab5, Tabulador1, Tabulador2, Tabulador3, Tabulador4, Tabulador5, ResTabulador1 = 0;
             var Textop = "",
@@ -113,7 +113,7 @@ $(document).ready(function() {
             }
             for (var i = 0; i < edificacion.length; i++) {
                 if (edificacion[i].checked == true) {
-                    Edificacion = edificacion[i].value;
+                    Edificacion = Aedif[edificacion[i].value];
                     for (let index = 0; index < Proyecto.length; index++) {
                         aux = ResTabulador[index].toFixed(5);
                         Importe.push(ImporteFac23(valueEdif[i], AreaTot, aux));

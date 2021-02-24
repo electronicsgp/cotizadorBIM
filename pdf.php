@@ -2,20 +2,70 @@
 
 include("./php/fpdf182/fpdf.php");
 include_once('CPDF.php');
-
+$aedif=array("Vivienda Familiar", "Vivienda Adosada", "Vivienda Multifamiliar", "Vivienda Residencial", "Oficinas y Locales", "Comercial", "administrativo", "Estacionamientos", "Pública concurrencia", "Docencia", "Salud", "Industrial");
+$nedif=array(5206.38, 12432.12, 11576.7, 20241.45, 16263.76, 14119.76, 22000, 6206.63, 13162.54, 6908.8, 25000, 5269.43);
 $nombre= $_POST["nombreC"]; 
 $Aproyec=$_POST["acheckbox"];
+$pnedif=($_POST["edificacion"]-1);
+$edificacion=$aedif[$pnedif]; 
+$calle=$_POST["calle"];
+$estado=$_POST["estado"];
+$ciudad=$_POST["ciudad"];
+$cp=$_POST["cp"];
+$areapb=$_POST["areaPb"];
+$numnv=$_POST["numNiv"];
+$areanp=$_POST["areaNp"];
+$acces=$_POST["accesibilidad"];
+$topo=$_POST["topografia"];
+$ubi=$_POST["ubicacion"];
+$tel=$_POST["numT"];
+$email=$_POST["email"];
+$nump=count($Aproyec);
+$ResTabulador[]=$nump;
+$Importe[]=$nump;
+$areaT=$areapb+($areanp*$numnv);
 $current = 0;
- $Stproye='';   
- foreach ($Aproyec as $key => $value) {
-     if ($current != count($Aproyec)-1) {
-        $Stproye .=$value.', ';
-     }
-     else
-        $Stproye .=$value.' ';
-    $current++;
+$ImporteT= 0;
+$Stproye='';   
+ 
+   foreach ($Aproyec as $key => $value) {
+      if ($current != $nump-1) {
+         $Stproye .=$value.", ";
+      }
+      else
+         $Stproye .= $value;
      
- }
+     
+     switch ($value) {
+        case 'Arquitectura':
+           $ResTabulador[$current]=TabuladorFac1($areaT,'-0.162','23.41');
+           break;
+         case "Estructura":
+            $ResTabulador[$current]=TabuladorFac1($areaT,'-0.163','4.2727');
+            break;
+        default:
+           # code...
+           break;
+     }
+     $current++;
+  }
+  for ($i=0; $i <$nump ; $i++) { 
+
+     $auxT= $ResTabulador[$i];
+     $Importe[$i]=ImporteFac23($nedif[$pnedif],$areaT,$auxT);
+     $ImporteT=$ImporteT+ $Importe[$i];
+  }
+
+
+  if ($nump>1){
+      $Stproye = "los proyectos ".$Stproye;
+   }
+   else {
+      $Stproye= "el proyecto ".$Stproye;
+   }
+
+     
+
 
 
 
@@ -37,13 +87,13 @@ $pdf->SetXY(20, 55);
 $pdf->Cell(20, 8, utf8_decode("$nombre"), 0, 'L');//insertar nombre del USUARIO
 //*****
 $pdf->SetXY(20,61);
-$pdf->MultiCell(170,5,utf8_decode("Por  este  conducto,  presentamos  a  su  consideración,  nuestra propuesta  para  la  elaboración del proyecto $Stproye de  casa  habitación  en   con  área  techada  de 795.66 m2.")); //insertar variables de PROYECTOS, EDIFICACION, CIUDAD, MUNICIPIO y AREA TOTAL
+$pdf->MultiCell(170,5,utf8_decode("Por  este  conducto,  presentamos  a  su  consideración,  nuestra propuesta  para  la  elaboración de $Stproye de $edificacion en $ciudad Estado de $estado con área techada de $areaT m2.")); //insertar variables de PROYECTOS, EDIFICACION, CIUDAD, MUNICIPIO y AREA TOTAL
 //*****
 $pdf->SetXY(20, 83);
 $pdf->Cell(20, 8, 'OBJETIVO: El objetivo de la presente propuesta: ', 0, 'L');
 //***** 
 $pdf->SetXY(20, 90);
-$pdf->MultiCell(170,5,utf8_decode('Elaborar el proyecto ESTRUCTURAL para construcción, basados en la normatividad aplicable en el municipio/Alcaldía del Estado de México/Cdmx, supletoriamente el Reglamento para Construcciones del Distrito Federal (de la Cd. De México), y el manual para obras civiles de la C.F.E.'));// insertar PROYECTOS, ALCALDIA y ESTADO y ESTADO
+$pdf->MultiCell(170,5,utf8_decode("Elaborar $Stproye para construcción, basados en la normatividad aplicable en $ciudad del Estado de $estado, supletoriamente el Reglamento para Construcciones del Distrito Federal (de la Cd. De México), y el manual para obras civiles de la C.F.E."));// insertar PROYECTOS, ALCALDIA y ESTADO y ESTADO
 //*****
 $pdf->SetXY(20, 115);
 $pdf->Cell(20, 8, 'Por lo expuesto, presentamos el presupuesto con los siguientes alcances.', 0, 'L');
@@ -96,8 +146,16 @@ $pdf->AddPAge();
 
 $pdf->SetXY(20, 45);
 $pdf->MultiCell(170,5,utf8_decode('Los depósitos, se deberán de abonar a la siguiente HSBC No. 6419640200 CLABE INTERBANCARIA 021180064196402994 a nombre de MOISÉS BARRIENTOS LOZANO.'));
-$pdf->SetXY(20, 60);
-$pdf->MultiCell(170,5,utf8_decode('El importe de la presente propuesta es de $ 15,000.00 (QUINCE MIL PESOS 00/100 M. N.), sin incluir el I. V. A.'));//insertar los IMPORTES e IMPORTE TOTAL
+$posn=60;
+for ($i=1; $i <=$nump ; $i++) { 
+   $aux=$Importe[($i-1)];
+   $paux=$Aproyec[($i-1)];
+   $pdf->SetXY(20, $posn);
+$pdf->MultiCell(170,5,utf8_decode("El importe del proyecto de $paux es de $ $aux , sin incluir el I. V. A."));//insertar los IMPORTES e IMPORTE TOTAL
+$posn= $posn+($i*10);
+}
+$pdf->SetXY(20, $posn); 
+$pdf->MultiCell(170,5,utf8_decode("El importe de la presente propuesta es de $ $ImporteT, sin incluir el I. V. A."));
 //****
 $pdf->SetXY(95, 180);
 $pdf->Cell(27, 8, utf8_decode('Atentamente'), 0, 'C');
@@ -107,5 +165,16 @@ $pdf->Cell(27, 8, utf8_decode('Ing. Moisés Barrientos Lozano.'), 0, 'C');
 $pdf->Output(); //Salida al navegador
  
     
-
+function TabuladorFac1($Area, $exp, $con)
+{
+   $Tab1 = pow($Area, $exp);
+   $TabuladorSub1 = ($con * $Tab1) / 100;
+   //$Tabulador1 = bcdiv($TabuladorSub1,'1',4);
+   $ResTabulador1 = $TabuladorSub1 * 0.5;
+   return $ResTabulador1;
+}
+function ImporteFac23($edif, $areat, $ResT)
+{
+   return $edif * $areat * $ResT * 0.7 * 0.9;
+}
 ?>
