@@ -38,10 +38,19 @@ $Stproye='';
      
      switch ($value) {
         case 'Arquitectura':
-           $ResTabulador[$current]=TabuladorFac1($areaT,'-0.162','23.41');
+           $ResTabulador[$current]=TabuladorFac1($areaT,-0.162, 23.41);
            break;
          case "Estructura":
-            $ResTabulador[$current]=TabuladorFac1($areaT,'-0.163','4.2727');
+            $ResTabulador[$current]=TabuladorFac1($areaT,-0.163, 4.2727);
+            break;
+         case "Instalalación hidráulica":
+            $ResTabulador[$current]=TabuladorFac1($areaT,-0.15, 3.5992);
+            break;
+         case 'Instalación sanitaria':
+            $ResTabulador[$current]=TabuladorFac1($areaT,-0.152, 5.1894);
+            break;
+         case 'Instalación eléctrica':
+            $ResTabulador[$current]=TabuladorFac1($areaT,-0.164, 4.775);
             break;
         default:
            # code...
@@ -93,7 +102,7 @@ $pdf->SetXY(20, 83);
 $pdf->Cell(20, 8, 'OBJETIVO: El objetivo de la presente propuesta: ', 0, 'L');
 //***** 
 $pdf->SetXY(20, 90);
-$pdf->MultiCell(170,5,utf8_decode("Elaborar $Stproye para construcción, basados en la normatividad aplicable en $ciudad del Estado de $estado, supletoriamente el Reglamento para Construcciones del Distrito Federal (de la Cd. De México), y el manual para obras civiles de la C.F.E."));// insertar PROYECTOS, ALCALDIA y ESTADO y ESTADO
+$pdf->MultiCell(170,5,utf8_decode("Elaborar $Stproye para construcción, basados en la normatividad aplicable en $ciudad del Estado de $estado, supletoriamente el Reglamento para Construcciones del Estado de $estado, y el manual para obras civiles de la C.F.E."));// insertar PROYECTOS, ALCALDIA y ESTADO y ESTADO
 //*****
 $pdf->SetXY(20, 115);
 $pdf->Cell(20, 8, 'Por lo expuesto, presentamos el presupuesto con los siguientes alcances.', 0, 'L');
