@@ -171,9 +171,47 @@ $pdf->Cell(27, 8, utf8_decode('Atentamente'), 0, 'C');
 $pdf->SetXY(80, 215);
 $pdf->Cell(27, 8, utf8_decode('Ing. Moisés Barrientos Lozano.'), 0, 'C');
 
-$pdf->Output(); //Salida al navegador
+$doc = $pdf->Output('','S') //Salida al navegador
  
-    
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
+require "PHPMailer-master/src/PHPMailer.php";
+require "PHPMailer-master/src/SMTP.php";
+require "PHPMailer-master/src/Exception.php";
+
+//Instantiation and passing `true` enables exceptions
+$mail = new PHPMailer(true);
+
+try {
+    //Server settings
+    $mail->SMTPDebug = 0;                      //Enable verbose debug output
+    $mail->isSMTP();                                            //Send using SMTP
+    $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+    $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+    $mail->Username   = 'zeuscaste@gmail.com';                     //SMTP username
+    $mail->Password   = 'Guapo123.';                               //SMTP password
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         //Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
+    $mail->Port       = 587;                                    //TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
+
+    //Recipients
+    $mail->setFrom('zeuscaste@gmail.com', 'Horizonte BIM');
+    $mail->addAddress('zeuscaste@gmail.com');     //Add a recipien
+
+    //Content
+    $mail->isHTML(true);                                  //Set email format to HTML
+    $mail->Subject = "Cotizacion Horizonte BIM";
+    $mail->Body = "<b>Por este medio le hacemos llegar la cotización solicitada de acuerdo a los datos ingresados en nuestro cotizador virtual. </b> <br><b>Gracias por utilizar Cotizador Horizonte BIM.</b></br>";
+
+    // definiendo el adjunto 
+    $mail->AddStringAttachment($doc, 'CotizacionBIM.pdf', 'base64');
+
+    $mail->send();
+    echo 'Message has been sent';
+} catch (Exception $e) {
+    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+}
 function TabuladorFac1($Area, $exp, $con)
 {
    $Tab1 = pow($Area, $exp);
