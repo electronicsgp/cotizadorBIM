@@ -76,7 +76,8 @@ $Stproye='';
      
 
 
-
+   setlocale(LC_ALL, 'es_MX');
+   $fecha = strftime("%A %d de %B del %Y");
 
 $pdf = new PDF();
 $pdf->AddPage();
@@ -89,7 +90,7 @@ $pdf->AddPage();
 //Fecha
 $pdf->SetFont('Times','', 12);
 $pdf->SetXY(130,40);
-$pdf->Cell(15, 8, utf8_decode('FECHA'), 0, 'L');//insertar variable de FECHA
+$pdf->Cell(15, 8, utf8_decode("$fecha"), 0, 'L');//insertar variable de FECHA
  
 //Datos
 $pdf->SetXY(20, 55);
