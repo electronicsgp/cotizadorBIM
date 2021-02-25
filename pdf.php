@@ -204,7 +204,7 @@ try {
 
     //Recipients
     $mail->setFrom('zeuscaste@gmail.com', 'Horizonte BIM');
-    $mail->addAddress('zeuscaste@gmail.com');     //Add a recipien
+    $mail->addAddress($email);     //Add a recipien
 
     //Content
     $mail->isHTML(true);                                  //Set email format to HTML
