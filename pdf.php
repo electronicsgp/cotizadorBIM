@@ -76,7 +76,7 @@ $Stproye='';
      
 
 
-   setlocale(LC_ALL, 'es_MX');
+   setlocale(LC_TIME, 'es_ES', 'Spanish_Spain', 'Spanish');
    $fecha = strftime("%A %d de %B del %Y");
 
 $pdf = new PDF();
@@ -216,7 +216,7 @@ try {
     $mail->AddStringAttachment($doc, 'CotizacionBIM.pdf', 'base64');
 
     $mail->send();
-    echo 'Message has been sent';
+    $enviado ="SE ENVIO EMAIL CORRECTAMETE A: ".$email;
 } catch (Exception $e) {
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 }
@@ -233,3 +233,70 @@ function ImporteFac23($edif, $areat, $ResT)
    return $edif * $areat * $ResT * 0.7 * 0.9;
 }
 ?>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Cotizador BIM</title>
+    <meta name='viewport' content='width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no' />
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link href="./images/logo.jpeg" rel="icon">
+    <link href="./images/logo.jpeg" rel="apple-touch-icon">
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="./plugins/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="./plugins/materialize/css/materialize.min.css">
+    <link rel="stylesheet" href="./plugins/validetta/validetta.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+
+    <link href="./css/general.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- <script src="./plugins//jquery-3.4.1.min.js"></script> -->
+    <script src="./plugins/materialize/js/materialize.min.js"></script>
+    <script src="./plugins/validetta/validetta.js"></script>
+    <script src="./plugins/validetta/validetta.min.js"></script>
+    <script src="./plugins/validetta/validettaLang-es-ES.js"></script>
+    <script src="./plugins/confirm/jquery-confirm.min.js"></script>
+
+</head>
+
+<body>
+    <header>
+        <nav class="nav-extended">
+            <div class="nav-wrapper">
+
+                <a href="#!" class="brand-logo center"><img src="./images/logo.jpeg" alt="" class="responsive-img"></a>
+            </div>
+            <div class="nav-content center">
+                <span class="nav-title">Cotizador BIM</span>
+            </div>
+
+        </nav>
+
+    </header>
+    <main class="valign-wrapper">
+       <div class="container">
+    <?php 
+    
+echo "<h5 class='s12 center-align'>$enviado</h5>"; 
+?>
+   
+</div>
+    </main>
+    <footer class="page-footer">
+
+        <div class="container center-align">
+            Copyright © PGP Developer 2021
+        </div>
+        </div>
+    </footer>
+
+</body>
+
+<script>
+    M.AutoInit();
+
+</html>
