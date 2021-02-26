@@ -129,7 +129,7 @@ $(document).ready(function() {
 
             var f = new Date();
             Fecha = "<div class='col s6 m6 l6 right-align'><p> " + diasSemana[f.getDay()] + ", " + f.getDate() + " de " + meses[f.getMonth()] + " de " + f.getFullYear() + "</p></div></div>";
-            Titulo = "<div class='row'><div class= 'col s6 m6 l6'><h5 class='titulo'>" + "Horizonte BIM" + "</h5></div>";
+            Titulo = "<div class='row'><div class= 'col s6 m6 l6'><h5 class='titulo'>" + "COTIZADOR ARQUITECTURA Y ESTRUCTURA" + "</h5></div>";
             //contentbox.innerHTML += Titulo;
 
 
@@ -152,7 +152,7 @@ $(document).ready(function() {
                 contentbox.innerHTML += Titulo + Fecha + Texto + Textop + textoR + Textoim + Texto2; //+ Textop + Texto2 + textoR;
             }
 
-            textoAlert = "<h4>HORIZONTE BIM</h4>" + "<p>Hola " + Nombre + " se envira un EMAIL a " + Correo + " en formato PDF con la cotizacion de manera desglosada</p>";
+            textoAlert = "<h4>COTIZADOR ARQUITECTURA Y ESTRUCTURA</h4>" + "<p>Hola " + Nombre + " se envira un EMAIL a " + Correo + " en formato PDF con la cotizacion de manera desglosada</p>";
             textoAlert1 = "<p>Si el correo electronico es correcto presione enviar, de lo contrario presione cancelar y proporcione el correo electronio correcto</p>"
             contentAl.innerHTML += textoAlert + textoAlert1;
             document.getElementById("testnose").onclick = function() { myFunction(botonM) };

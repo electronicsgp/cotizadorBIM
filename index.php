@@ -32,16 +32,15 @@
 
 <body>
     <header>
-        <nav class="nav-extended">
-            <div class="nav-wrapper">
-
-                <a href="#!" class="brand-logo center"><img src="./images/logo.jpeg" alt="" class="responsive-img"></a>
-            </div>
-            <div class="nav-content center">
-                <span class="nav-title">Cotizador BIM</span>
-            </div>
-
-        </nav>
+    <nav class="nav-extended ">
+    <div class="nav-wrapper center-align ">
+     <span> <i class="fas fa-pencil-ruler fa-4x"></i><i class="fas fa-lightbulb fa-4x"></i><i class="fas fa-user-edit fa-4x"></i></span>
+    </div>
+    <div class="nav-content center-align">
+      <span class="nav-title ">COTIZADOR ARQUITECTURA Y ESTRUCTURA</span>
+    
+    </div>
+  </nav>
 
     </header>
     <main class="valign-wrapper">

@@ -216,7 +216,7 @@ try {
     $mail->AddStringAttachment($doc, 'CotizacionBIM.pdf', 'base64');
 
     $mail->send();
-    $enviado ="SE ENVIO EMAIL CORRECTAMETE A: ".$email;
+    $enviado =" ".$email;
 } catch (Exception $e) {
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 }
@@ -265,24 +265,35 @@ function ImporteFac23($edif, $areat, $ResT)
 
 <body>
     <header>
-        <nav class="nav-extended">
-            <div class="nav-wrapper">
-
-                <a href="#!" class="brand-logo center"><img src="./images/logo.jpeg" alt="" class="responsive-img"></a>
-            </div>
-            <div class="nav-content center">
-                <span class="nav-title">Cotizador BIM</span>
-            </div>
-
-        </nav>
+    <nav class="nav-extended ">
+    <div class="nav-wrapper center-align ">
+     <span> <i class="fas fa-pencil-ruler fa-4x"></i><i class="fas fa-lightbulb fa-4x"></i><i class="fas fa-user-edit fa-4x"></i></span>
+    </div>
+    <div class="nav-content center-align">
+      <span class="nav-title ">COTIZADOR ARQUITECTURA Y ESTRUCTURA</span>
+    
+    </div>
+  </nav>
 
     </header>
     <main class="valign-wrapper">
        <div class="container">
-    <?php 
-    
-echo "<h5 class='s12 center-align'>$enviado</h5>"; 
-?>
+       <div class="col s12 m7">
+    <h2 class="header">Hola <?php echo$nombre ?></h2>
+    <div class="card horizontal">
+      <div class="card-stacked">
+        <div class="card-content">
+          <p>Se ha enviado un archivo PDF al correo:<?php echo$enviado;?> </p>
+          <br>
+          <i class="fas fa-envelope-open-text fa-7x fa-spin"></i>
+        </div>
+        <div class="card-action">
+          <a href="./">CONTINUAR</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
    
 </div>
     </main>
