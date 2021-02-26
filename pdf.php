@@ -277,6 +277,7 @@ function ImporteFac23($edif, $areat, $ResT)
 
     </header>
     <main class="valign-wrapper">
+<<<<<<< HEAD
        <div class="container">
        <div class="col s12 m7">
     <h2 class="header">Hola <?php echo$nombre ?></h2>
@@ -296,6 +297,17 @@ function ImporteFac23($edif, $areat, $ResT)
 
    
 </div>
+=======
+      <div class="container">
+      <?php 
+         echo "<h5 class='s12 center-align'>$enviado</h5>"; 
+      ?>
+      <div>
+         <button class="btn waves-effect waves-light" type="submit" onclick="window.location.href='/index.php'">Finalizar
+         <i class="fas fa-check-double"></i></button>
+      </div>
+      </div>
+>>>>>>> 4e291c0b84e62708ecfbd0e2e3206d7f8048cb1d
     </main>
     <footer class="page-footer">
 
