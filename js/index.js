@@ -81,12 +81,20 @@ $(document).ready(function() {
             Telefono = document.getElementById("numTel").value;
             Correo = document.getElementById("email").value;
 
-            Factor2 =  parseInt(document.getElementById("fac2").value, 10);
-            Factor3 =  parseInt(document.getElementById("fac3").value, 10);
+            Factor2 =  parseFloat(document.getElementById("fac2").value);
+            Factor3 =  parseFloat(document.getElementById("fac3").value);
 
-            FactorTie = parseInt(document.getElementById("factie").value, 10);
-            FactorTie2 = parseInt(document.getElementById("factie2").value, 10);
-            FactorTie3 = parseInt(document.getElementById("factie3").value, 10);
+            console.log(Factor2);
+            console.log(Factor3);
+
+            FactorTie = parseFloat(document.getElementById("factie").value);
+            FactorTie2 = parseFloat(document.getElementById("factie2").value);
+            FactorTie3 = parseFloat(document.getElementById("factie3").value);
+
+            console.log(FactorTie);
+            console.log(FactorTie2);
+            console.log(FactorTie3);
+
 
             AreaTot = AreaPB + (AreaNiv * NumeroNiv) + (AreaSot * NumSot);
 
@@ -94,7 +102,9 @@ $(document).ready(function() {
             TiempoEjec2 = 0.2959 * TiempoEjec;
             TiempoEjec3 = TiempoEjec2.toFixed(2);
             TiempoEjecSub = TiempoEjec3 * FactorTie * FactorTie2 * FactorTie3;
+            TiempoEjecSub = TiempoEjecSub.toFixed(2);
             TiempoEjecT = TiempoEjecSub * NumProy;
+            TiempoEjecT = TiempoEjecT.toFixed(2);
             
             // factores de reduccion
             //Factor2 = 0.7;
