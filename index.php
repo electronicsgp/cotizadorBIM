@@ -338,6 +338,31 @@
                                         <input placeholder="Evangeline@ray.com" id="email" type="text" name="email" data-validetta="required,email">
                                         <label ><i class="fas fa-at"></i> Correo Electrónico</label>
                                     </div>
+                                    
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s12 m4 l4">
+                                        <input placeholder="Factor Mercado (IMPORTE)" id="fac2" name="fac2" type="text">
+                                        <label ><i></i> Factor Mercado</label>
+                                    </div>
+                                    <div class="input-field col s12 m4 l4">
+                                        <input placeholder="Factor Situación Empresa (IMPORTE)" id="fac3" type="text" name="fac3">
+                                        <label ><i></i> Factor Situación Empresa</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s12 m4 l4">
+                                        <input placeholder="Factor Tabulador (TIEMPO ENTREGA)" id="factie" name="factie" type="text">
+                                        <label ><i></i> Factor Mercado</label>
+                                    </div>
+                                    <div class="input-field col s12 m4 l4">
+                                        <input placeholder="Factor Eficiencia Empresa (TIEMPO ENTREGA)" id="factie2" name="factie2" type="text">
+                                        <label ><i></i> Factor Mercado</label>
+                                    </div>
+                                    <div class="input-field col s12 m4 l4">
+                                        <input placeholder="Factor Carga de Trabajo (TIEMPO ENTREGA)" id="factie3" type="text" name="factie3">
+                                        <label ><i></i> Factor Situación Empresa</label>
+                                    </div>
                                 </div>
                                 <button class="btn waves-effect waves-light" type="submit" name="action">Cotizar
                                 <i class="fas fa-check-double"></i></button>
