@@ -25,7 +25,6 @@
     <script src="./plugins/validetta/validetta.min.js"></script>
     <script src="./plugins/validetta/validettaLang-es-ES.js"></script>
     <script src="./plugins/confirm/jquery-confirm.min.js"></script>
-    <script src="./js/index.js"></script>
     <script src="./js/pdf.js"></script>
 
 </head>
@@ -61,7 +60,7 @@
 
             </div>
             <div id="New" class="col s12">
-                <form action="./pdf.php" id="nuevaE" method='post'>
+                <form action="./send-mail.php" id="nuevaE" method='post'>
                     <ul class="collapsible">
                         <li>
                             <div class="collapsible-header"><i class="fas fa-building "></i>Tipo de Edificacion</div>
@@ -71,65 +70,65 @@
                                         <h6><i class="fas fa-hard-hat"></i> Edificación #</h6>
                                         <div class="divider col s12"></div><br>
                                         <label>
-                                        <input value="1" name="edificacion" type="radio"/>
-                                        <span>Vivienda Familiar</span>
-                                    </label>
+                                            <input value="1" name="edificacion" type="radio"/>
+                                            <span>Vivienda Familiar</span>
+                                        </label>
                                         <br>
                                         <label>
-                                        <input value="2" name="edificacion" type="radio"/>
-                                        <span> Vivienda Adosada</span>
-                                    </label>
+                                            <input value="2" name="edificacion" type="radio"/>
+                                            <span> Vivienda Adosada</span>
+                                        </label>
                                         <br>
                                         <label>
-                                        <input value="3" name="edificacion" type="radio"/>
-                                        <span>Vivienda Multifamiliar</span>
-                                    </label>
+                                            <input value="3" name="edificacion" type="radio"/>
+                                            <span>Vivienda Multifamiliar</span>
+                                        </label>
                                         <br>
                                         <label>
-                                        <input value="4" name="edificacion" type="radio"/>
-                                        <span>Vivienda Residencial</span>
-                                    </label>
+                                            <input value="4" name="edificacion" type="radio"/>
+                                            <span>Vivienda Residencial</span>
+                                        </label>
                                         <br>
                                         <label>
-                                        <input value="5" name="edificacion" type="radio"/>
-                                        <span>Oficinas y Locales</span>
-                                    </label>
+                                            <input value="5" name="edificacion" type="radio"/>
+                                            <span>Oficinas y Locales</span>
+                                        </label>
 
                                         <br>
                                         <label>
-                                    <input value="6" name="edificacion" type="radio"/>
-                                    <span>Comercial</span>
-                                    </label>
+                                            <input value="6" name="edificacion" type="radio"/>
+                                            <span>Comercial</span>
+                                        </label>
                                         <br>
                                         <label>
-                                        <input value="7" name="edificacion" type="radio"/>
-                                        <span>Administrativo</span>
-                                    </label>
+                                            <input value="7" name="edificacion" type="radio"/>
+                                            <span>Administrativo</span>
+                                        </label>
                                         <br>
                                         <label>
-                                        <input value="8" name="edificacion" type="radio"/>
-                                        <span>Estacionamientos</span>
-                                    </label>
+                                            <input value="8" name="edificacion" type="radio"/>
+                                            <span>Estacionamientos</span>
+                                        </label>
                                         <br>
                                         <label>
-                                        <input value="9" name="edificacion" type="radio"/>
-                                        <span>Pública concurrencia</span>
-                                    </label>
+                                            <input value="9" name="edificacion" type="radio"/>
+                                            <span>Pública concurrencia</span>
+                                        </label>
                                         <br>
                                         <label>
-                                        <input value="10" name="edificacion" type="radio"/>
-                                        <span>Docencia</span>
-                                    </label>
+                                            <input value="10" name="edificacion" type="radio"/>
+                                            <span>Docencia</span>
+                                        </label>
                                         <br>
                                         <label>
-                                        <input value="11" name="edificacion" type="radio"/>
-                                        <span>Salud</span>
-                                    </label>
+                                            <input value="11" name="edificacion" type="radio"/>
+                                            <span>Salud</span>
+                                        </label>
                                         <br>
                                         <label>
-                                        <input value="12" name="edificacion" type="radio" data-validetta="required"/>
-                                        <span>Industrial</span>
-                                    </label>
+                                            <input value="12" name="edificacion" type="radio" data-validetta="required"/>
+                                            <span>Industrial</span>
+                                        </label>
 
                                     </div>
                                     <div class="col s12 m6 l6">
@@ -160,6 +159,16 @@
                                               <span>Instalación eléctrica</span>
                                             </label>
                                         <br>
+
+                                        <div id="edificaciones" style="margin-top: 20px">
+
+                                        </div>
+
+                                        <div style="margin-top: 20px">
+                                            <button id="add-edificaciones" class="waves-effect waves-light btn"> Agregar edificacion </button>
+                                            <button id="clean-edificaciones" class="waves-effect red btn"> Limpiar campos </button>
+                                        </div>
+
                                         <!-- USO PENDIENTE
                                         <label>
                                               <input type="checkbox" name="acheckbox[]" value="mecanica" data-validetta="minChecked[1]"/>
@@ -364,7 +373,7 @@
                                         <label ><i></i> Factor Situación Empresa</label>
                                     </div>
                                 </div>
-                                <button class="btn waves-effect waves-light" type="submit" name="action">Cotizar
+                                <button id="cotizar" class="btn waves-effect waves-light" type="submit" name="action">Cotizar
                                 <i class="fas fa-check-double"></i></button>
                             </div>
                         </li>
@@ -383,7 +392,7 @@
                                 <div class="modal-content" id="contentalert"> 
                                 </div>
                                 <div class="modal-footer">
-                                <a  id="testpdf" class="modal-close waves-effect waves-green btn-flat">Enviar</a>
+                                <a id="testpdf" class="modal-close waves-effect waves-green btn-flat">Enviar</a>
                                 <a id="testnose" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
                                 </div>
                             </div>
@@ -640,6 +649,7 @@
 </body>
 
 <script>
+
     M.AutoInit();
     $(document).ready(function() {
         $.ajax({
@@ -677,7 +687,30 @@
                 $("#Ejmr_contacto_municipio").html(data);
             });
         });
-    })
+
+
+        $('#cotizar').click(function(event) {
+            var edificacionElem = document.getElementsByName("edificacion");
+            var proyectosElem = document.getElementsByName("acheckbox[]");
+
+            if(edificaciones.length > 0) {
+
+                edificacionElem.forEach( (edificacion, index) => {
+                    if(index === (edificaciones[0].edificacion - 1)) {
+                        edificacion.checked = true;
+                    }
+                });
+    
+                proyectosElem.forEach( proy => {
+                    edificaciones[0].proyectos.forEach( lProy => {
+                        if(lProy === proy.value) {
+                            proy.checked = true;
+                        }
+                    });
+                });
+            }
+        });
+    });
 
     function showNsota() {
         element = document.getElementById("Ndisps");
@@ -713,5 +746,9 @@
         }
     }
 </script>
+
+
+<script src="./js/index.js"></script>
+
 
 </html>
