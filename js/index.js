@@ -116,19 +116,13 @@ $(document).ready(function () {
             Telefono = document.getElementById("numTel").value;
             Correo = document.getElementById("email").value;
 
-            Factor2 =  parseFloat(document.getElementById("fac2").value);
-            Factor3 =  parseFloat(document.getElementById("fac3").value);
+            Factor1 = parseFloat(document.getElementById("f1E").value);
+            Factor2 =  parseFloat(document.getElementById("f2E").value);
+            Factor3 =  parseFloat(document.getElementById("f3E").value);
 
-            // console.log(Factor2);
-            // console.log(Factor3);
-
-            FactorTie = parseFloat(document.getElementById("factie").value);
-            FactorTie2 = parseFloat(document.getElementById("factie2").value);
-            FactorTie3 = parseFloat(document.getElementById("factie3").value);
-
-            // console.log(FactorTie);
-            // console.log(FactorTie2);
-            // console.log(FactorTie3);
+            FactorTie = parseFloat(document.getElementById("f1T").value);
+            FactorTie2 = parseFloat(document.getElementById("f2T").value);
+            FactorTie3 = parseFloat(document.getElementById("f3T").value);
 
 
             AreaTot = AreaPB + (AreaNiv * NumeroNiv) + (AreaSot * NumSot);
@@ -155,27 +149,27 @@ $(document).ready(function () {
                 for (let j = 0; j < edificacion.proyectos.length; j++) {
                     switch (edificacion.proyectos[j]) {
                         case "Arquitectura":
-                            ResTabulador.push(TabuladorFac1(AreaTot, -0.162, 23.41));
+                            ResTabulador.push(TabuladorFac1(AreaTot, -0.162, 23.41, Factor1));
                             break;
     
                         case "Estructura":
-                            ResTabulador.push(TabuladorFac1(AreaTot, -0.163, 4.2727));
+                            ResTabulador.push(TabuladorFac1(AreaTot, -0.163, 4.2727, Factor1));
                             break;
                         case "Instalalación hidráulica":
-                            ResTabulador.push(TabuladorFac1(AreaTot, -0.15, 3.5992));
+                            ResTabulador.push(TabuladorFac1(AreaTot, -0.15, 3.5992, Factor1));
                             break;
                         case "Instalación sanitaria":
-                            ResTabulador.push(TabuladorFac1(AreaTot, -0.152, 5.1894));
+                            ResTabulador.push(TabuladorFac1(AreaTot, -0.152, 5.1894, Factor1));
                             break;
                         case "Instalación eléctrica":
-                            ResTabulador.push(TabuladorFac1(AreaTot, -0.164, 4.775));
+                            ResTabulador.push(TabuladorFac1(AreaTot, -0.164, 4.775, Factor1));
                             break;
     
                     }
 
     
                     var aux = ResTabulador[j].toFixed(5);
-                    Importe[index].push(ImporteFac23(valueEdif[parseInt(edificacion.edificacion)], AreaTot, aux));
+                    Importe[index].push(ImporteFac23(valueEdif[parseInt(edificacion.edificacion)], AreaTot, aux, Factor2, Factor3));
                     ;
                 }
 
@@ -188,10 +182,10 @@ $(document).ready(function () {
 
             });
 
-            console.log(ImportesTotales);
+            /*console.log(ImportesTotales);
             console.log(Importe);
             console.log(TiemposEjecT);
-            console.log(TiemposEjecSub);
+            console.log(TiemposEjecSub);*/
 
 
             var f = new Date();
@@ -340,16 +334,16 @@ var edificaciones = [];
 
 initDomEdificacion();
 
-function TabuladorFac1(Area, exp, con) {
+function TabuladorFac1(Area, exp, con, Factor1) {
     Tab1 = Math.pow(Area, exp);
     TabuladorSub1 = (con * Tab1) / 100;
     Tabulador1 = TabuladorSub1.toFixed(5);
-    ResTabulador1 = Tabulador1 * 0.5;
+    ResTabulador1 = Tabulador1 * Factor1;
     return ResTabulador1;
 }
 
-function ImporteFac23(edif, areat, ResT) {
-    return edif * areat * ResT * 0.7 * 0.9;
+function ImporteFac23(edif, areat, ResT, Factor2, Factor3) {
+    return edif * areat * ResT * Factor2 * Factor3;
 }
 
 function myFunction(test12) {

@@ -1,3 +1,20 @@
+<?php
+    include('config.php');
+
+    $sql_fac = "SELECT * FROM factores";
+    $result = mysqli_query($db,$sql_fac);
+
+   //se despliega el resultado
+   while ($row = mysqli_fetch_assoc($result)){
+        $f1E = $row['FactorRedProyecto'];  
+        $f2E = $row['FactorMerProyecto'];  
+        $f3E = $row['FactorSitEmProyecto']; 
+        $f1T = $row['FactorRedTiempo'];  
+        $f2T = $row['FactorEficTiempo'];  
+        $f3T = $row['FactorCarTiempo'];  
+    }
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -349,29 +366,33 @@
                                     </div>
                                     
                                 </div>
-                                <div class="row">
+                                <div class="row" style="display: none">
                                     <div class="input-field col s12 m4 l4">
-                                        <input placeholder="Factor Mercado (IMPORTE)" id="fac2" name="fac2" type="text">
-                                        <label ><i></i> Factor Mercado</label>
+                                        <input value="<?php echo $f1E; ?>" id="f1E" type="text" name="factor1Economico">
+                                        <label>Factor Reducción Tabulador</label>
                                     </div>
                                     <div class="input-field col s12 m4 l4">
-                                        <input placeholder="Factor Situación Empresa (IMPORTE)" id="fac3" type="text" name="fac3">
-                                        <label ><i></i> Factor Situación Empresa</label>
+                                        <input value="<?php echo $f2E; ?>" id="f2E" type="text" name="factor2Economico">
+                                        <label>Factor Mercado</label>
                                     </div>
+                                    <div class="input-field col s12 m4 l4">
+                                        <input value="<?php echo $f3E; ?>" id="f3E" type="text" name="factor3Economico">
+                                        <label>Factor Situación de la Empresa</label>
+                                    </div>                
                                 </div>
-                                <div class="row">
+                                <div class="row" style="display: none">
                                     <div class="input-field col s12 m4 l4">
-                                        <input placeholder="Factor Tabulador (TIEMPO ENTREGA)" id="factie" name="factie" type="text">
-                                        <label ><i></i> Factor Mercado</label>
+                                        <input value="<?php echo $f1T; ?>" id="f1T" type="text" name="factor1Tiempo">
+                                        <label>Factor Reducción Tabulador</label>
                                     </div>
                                     <div class="input-field col s12 m4 l4">
-                                        <input placeholder="Factor Eficiencia Empresa (TIEMPO ENTREGA)" id="factie2" name="factie2" type="text">
-                                        <label ><i></i> Factor Mercado</label>
+                                        <input value="<?php echo $f2T; ?>" id="f2T" type="text" name="factor2Tiempo">
+                                        <label>Factor Mercado</label>
                                     </div>
                                     <div class="input-field col s12 m4 l4">
-                                        <input placeholder="Factor Carga de Trabajo (TIEMPO ENTREGA)" id="factie3" type="text" name="factie3">
-                                        <label ><i></i> Factor Situación Empresa</label>
-                                    </div>
+                                        <input value="<?php echo $f3T; ?>" id="f3T" type="text" name="factor3Tiempo">
+                                        <label>Factor Situación de la Empresa</label>
+                                    </div>               
                                 </div>
                                 <button id="cotizar" class="btn waves-effect waves-light" type="submit" name="action">Cotizar
                                 <i class="fas fa-check-double"></i></button>
