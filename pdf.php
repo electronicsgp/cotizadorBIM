@@ -73,6 +73,7 @@ foreach($edificaciones as $keyE => $edificacion) {
    $pdf->SetFont('Times','',12);
    $posn = $posn + 10;
    $pdf->SetXY(20,$posn);
+   $areaTotal = $edificacion["metros"];
    $pdf->MultiCell(170,5,utf8_decode("Propuesta  para  la  elaboración de $proyectos de $tempEdificacion en $ciudad Estado de $estado con área techada de $areaTotal m2."));
    $posn= $posn + 20;
    foreach($edificacion["proyectos"] as $keyP => $proyecto) {

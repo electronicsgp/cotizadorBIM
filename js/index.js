@@ -125,15 +125,21 @@ $(document).ready(function () {
             FactorTie3 = parseFloat(document.getElementById("f3T").value);
 
 
-            AreaTot = AreaPB + (AreaNiv * NumeroNiv) + (AreaSot * NumSot);
+            var AreaTot;
 
             // TODO
 
             edificaciones.forEach((edificacion, index) => {
 
+                if (changeRules) {
+                    AreaTot = AreaPB + (edificacion.metros * NumeroNiv) + (AreaSot * NumSot);
+                    console.log(AreaTot);
+                } else {
+                    AreaTot = AreaPB + (AreaNiv * NumeroNiv) + (AreaSot * NumSot);
+                }
 
                 var ResTabulador = [];
-                Importe[index] = new Array();
+                Importe[index] = new Array(); 
 
                 
                 TiempoEjec = Math.pow(AreaTot, 0.4548);
@@ -213,6 +219,7 @@ $(document).ready(function () {
 
                 if (edificacion.proyectos.length == 1) {
 
+
                     Texto = "<div class='s12'>" + "<p><b>Edificacion #" + (index + 1) + ": </b>" + edificacion.proyectos[0] + " de tipo " + Aedif[edificacion.edificacion - 1] + " en " + Ciudad + ", con un área total de " + AreaTot + " m2." + "</p></div>";
                     Texto2 = "<div class='12'><b>" + "El importe de la presente propuesta es de $" + ImportesTotales[index].toFixed(2) + ", sin incluir el I. V. A." + "</b></div>";
                     Texto3 = "<div class='s12'>" + "Tiempo de entrega estimado por proyecto: " + TiemposEjecSub[index];
@@ -220,6 +227,8 @@ $(document).ready(function () {
                     contentbox.innerHTML += Texto + Texto2 + Texto3 + Texto4;
     
                 } else {
+                    var areaTot = AreaPB + (edificacion.metros * NumeroNiv) + (AreaSot * NumSot);
+
                     firstText = "<div class='s12'><b>Edificacion #" + (index + 1) + ": </b></div>"
                     contentbox.innerHTML += firstText;
                     Textop = '';
@@ -230,7 +239,7 @@ $(document).ready(function () {
                         Textoim += "<div class='s12'>" + "     -El importe del proyecto de " + edificacion.proyectos[i] + " es de $" + Importe[index][i].toFixed(2) + ", sin incluir el I. V. A." + "</div>";
     
                     }
-                    textoR = "<div class='s12'>" + "De tipo " + Aedif[edificacion.edificacion - 1] + " en " + Ciudad + " Edo. de " + Estado + ", con un área total de " + AreaTot + " m<sup>2</sup>." + "</div>";
+                    textoR = "<div class='s12'>" + "De tipo " + Aedif[edificacion.edificacion - 1] + " en " + Ciudad + " Edo. de " + Estado + ", con un área total de " + areaTot + " m<sup>2</sup>." + "</div>";
                     Texto2 = "<div class='s12'><b>" + "El importe de la presente propuesta es de $" + ImportesTotales[index].toFixed(2) + ", sin incluir el I. V. A." + "</b></div>";
                     Texto3 = "<div class='s12'>" + "Número de proyectos: " + edificacion.proyectos.length + ", tiempo de entrega estimado por proyecto: " + TiemposEjecSub[index];
                     Texto4 = "<div class='12'><b>" + "El tiempo total estimado de ejecución es de: " + TiemposEjecT[index] + " Semanas </b></div> <hr>";
@@ -267,7 +276,8 @@ $(document).ready(function () {
                         importesTotales: ImportesTotales,
                         importes: Importe,
                         tiemposEjecT: TiemposEjecT,
-                        tiemposEjecSub: TiemposEjecSub
+                        tiemposEjecSub: TiemposEjecSub,
+                        changeRules
                     }
                 }).done(function (data) {
                 testsub();
@@ -331,6 +341,7 @@ $(document).ready(function () {
 });
 
 var edificaciones = [];
+var changeRules = false;
 
 initDomEdificacion();
 
@@ -388,6 +399,75 @@ function initDomEdificacion() {
             document.querySelector('#clean-edificaciones').disabled = !verifyEdificacion(1);
         })
     });
+
+    var changeRulesElem = document.getElementById('change');
+
+
+    changeRulesElem.addEventListener("change", function (event) {
+
+
+       
+        var areaPbElem = document.getElementById('areaNp');
+        var direccionElem = document.getElementById('dirUb');
+
+
+        var m2Elems = document.getElementsByName('longitud');
+        var direccionElems = document.getElementsByName('direcciones');
+
+        console.log(m2Elems);
+        console.log(direccionElems);
+
+        if (!changeRules) {
+
+            areaPbElem.value = "";
+            direccionElem.value = "";
+            areaPbElem.placeholder = "Introduce el valor en la edificación";
+            direccionElem.placeholder = "Introduce el valor en la edificación";
+            
+            
+
+            areaPbElem.disabled = true;
+            direccionElem.disabled = true;
+
+            m2Elems.forEach(mElem => {
+                mElem.placeholder = "3400";
+                mElem.disabled = false;
+            });
+
+            direccionElems.forEach(dirElem => {
+                dirElem.placeholder = "Calle 6 No. 517, Col.";
+                dirElem.disabled = false;
+            });
+        } else {
+            areaPbElem.placeholder = "3400";
+            direccionElem.placeholder  = "Calle 6 No. 517, Col.";
+        
+
+            m2Elems.forEach(mElem => {
+                mElem.value = "";
+                mElem.placeholder = "Por ahora es un valor único";
+                mElem.disabled = true;
+            });
+
+            direccionElems.forEach(dirElem => {
+                dirElem.value = "";
+                dirElem.placeholder = "Por ahora es un valor único";
+                dirElem.disabled = true;
+            });
+
+            areaPbElem.disabled = false;
+            direccionElem.disabled = false;
+        }
+
+        changeRules = !changeRules;
+        
+
+    });
+
+}
+
+function some() {
+    
 }
 
 function addEdificacion() {
@@ -399,8 +479,60 @@ function addEdificacion() {
         var pos = edificaciones.length - 1;
 
         var container = document.querySelector('#edificaciones');
+        var formValidatta = document.querySelector('#nuevaE');
+
+
         var div = document.createElement('div');
         var button = document.createElement('button');
+
+        
+    
+        var divInputs = document.createElement('div');
+        var spacing = document.createElement('h5');
+        spacing.textContent = " "
+        var lineBreaker = document.createElement('br');
+
+
+        var divM2 = document.createElement('div');
+        var divDireccion = document.createElement('div');
+
+
+        var labelM2 = document.createElement('label');
+        labelM2.innerHTML = 'Área del nivel tipo (m2)'
+        spacing.appendChild(labelM2)
+        divM2.appendChild(spacing);
+
+        
+
+        var inputM = document.createElement('input');
+        inputM.setAttribute("type", "number");
+        inputM.setAttribute("name", "longitud");
+        inputM.setAttribute("placeholder", "3400");
+        inputM.setAttribute("required", "");
+        if (!changeRules) {
+            inputM.disabled = true;
+            inputM.setAttribute("placeholder", "Por ahora es un valor único");
+        }
+        divM2.appendChild(inputM);
+
+
+        var labelDir = document.createElement('label');
+        labelDir.innerHTML = 'Ubicación del proyecto'
+        divDireccion.appendChild(labelDir);
+
+        var inputDir = document.createElement('input');
+        inputDir.setAttribute("type", "text");
+        inputDir.setAttribute("name", "direcciones");
+        inputDir.setAttribute("placeholder", "  Call 5 No. 234 Col.");
+        inputDir.setAttribute("required", "");
+        if (!changeRules) {
+            inputDir.disabled = true;
+            inputDir.setAttribute("placeholder", "Por ahora es un valor único");
+        }
+        divDireccion.appendChild(inputDir);
+
+        divInputs.appendChild(divM2);
+        divInputs.appendChild(divDireccion);
 
         div.classList.add('col', 's6');
 
@@ -409,11 +541,20 @@ function addEdificacion() {
         button.classList.add('waves-effect', 'waves-light', 'btn', 'col', 's6');
         button.style.cssText = 'width: 80%;'
         div.appendChild(button)
+
+        
+        div.appendChild(lineBreaker);
+        div.appendChild(divInputs);
+        
+
+
         container.appendChild(div);
         button.addEventListener('click', function (event) {
             event.preventDefault();
             completeEdificaciones(pos);
         });
+
+        formValidatta.appendChild(container);
 
         document.querySelector('#add-edificaciones').disabled = true;
         document.querySelector('#clean-edificaciones').disabled = true;
@@ -454,7 +595,9 @@ function saveEdificacion() {
 
     var tempEdificacion = {
         edificacion: '',
-        proyectos: []
+        proyectos: [],
+        metros: 0,
+        direccion: ''
     };
 
     edificacionElem.forEach( (input, index) => {
